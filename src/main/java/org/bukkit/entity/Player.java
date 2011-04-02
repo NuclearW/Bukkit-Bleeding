@@ -12,6 +12,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.Statistic;
 import org.bukkit.command.CommandSender;
 import org.bukkit.map.MapView;
+import org.bukkit.inventory.Inventory;
 
 /**
  * Represents a player, connected or not
@@ -169,6 +170,25 @@ public interface Player extends HumanEntity, CommandSender, OfflinePlayer {
      * @return Whether player is ignoring sleep.
      */
     public boolean isSleepingIgnored();
+    
+    /**
+     * Closes any dialog windows the client may have open at the time. If no windows are open, it does nothing
+     */
+    public void closeWindow();
+
+    /**
+     * Opens an inventory dialog to the player, with the given inventory displayed in the upper pane, and the player's inventory in the lower pane;
+     * 
+     * @param inventory to use in the dialog GUI
+     */
+    public void openInventoryWindow(Inventory inventory);
+
+    /**
+     * Opens an workbench dialog to the player, using the workbench at the given location
+     * 
+     * @param location of the workbench to use. Must be a valid workbench.
+     */
+    public void openWorkbenchWindow(Location location);
 
     /**
      * Play a note for a player at a location. This requires a note block
