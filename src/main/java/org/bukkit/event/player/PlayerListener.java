@@ -120,7 +120,16 @@ public class PlayerListener implements Listener {
      *
      * @param event Relevant event details
      */
-    public void onInventoryOpen(PlayerInventoryEvent event) {}
+    public void onInventoryOpen(PlayerInventoryOpenEvent event) {
+    }
+    
+    /**
+     * Called when a player closes an inventory
+     *
+     * @param event Relevant event details
+     */
+    public void onInventoryClose(PlayerInventoryCloseEvent event) {
+    }
 
     /**
      * Called when a player changes their held item
