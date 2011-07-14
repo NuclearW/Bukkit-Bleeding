@@ -1,14 +1,26 @@
 
-package org.bukkit.event.player;
+package org.bukkit.event.inventory;
 
 import org.bukkit.entity.Player;
+import org.bukkit.event.Cancellable;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryTransaction;
 
 /**
  * Represents a player related inventory event
  */
-public class PlayerInventoryCloseEvent extends PlayerInventoryEvent {    
-    public PlayerInventoryCloseEvent(Player player, Inventory inventory) {
-        super(Type.INVENTORY_CLOSE, player, inventory);
+public class InventoryCloseEvent extends InventoryEvent {
+    protected Player who;
+    public InventoryCloseEvent(Player player, InventoryTransaction transaction) {
+        super(Type.INVENTORY_CLOSE, transaction);
+        this.who = player;
+    }
+
+    /**
+     * Returns the player involved in this event
+     * @return Player who is involved in this event
+     */
+    public final Player getPlayer() {
+        return who;
     }
 }

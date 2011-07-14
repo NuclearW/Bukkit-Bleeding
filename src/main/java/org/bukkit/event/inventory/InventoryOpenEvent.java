@@ -1,23 +1,26 @@
 
-package org.bukkit.event.player;
+package org.bukkit.event.inventory;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.block.Block;
+import org.bukkit.inventory.InventoryTransaction;
 import org.bukkit.event.Cancellable;
 
 /**
  * Represents a player related inventory event
  */
-public class PlayerInventoryOpenEvent extends PlayerInventoryEvent implements Cancellable {
+public class InventoryOpenEvent extends InventoryEvent implements Cancellable {
     protected Block block;
+    protected Player who;
     private boolean cancelled;
     
-    public PlayerInventoryOpenEvent(Player player, Inventory inventory, Block block) {
-        super(Type.INVENTORY_OPEN, player, inventory);
+    public InventoryOpenEvent(Player player, InventoryTransaction transaction, Block block) {
+        super(Type.INVENTORY_OPEN, transaction);
         
         this.block = block;
         this.cancelled = false;
+        this.who = player;
     }
     
     /**
