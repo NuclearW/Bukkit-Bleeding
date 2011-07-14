@@ -7,4 +7,6 @@ package org.bukkit.inventory;
 public interface InventoryCrafting extends Inventory {
     ItemStack getResult();
     ItemStack[] getMatrix();
+    void setResult(ItemStack newResult);
+    void setMatrix(ItemStack[] contents);
 }

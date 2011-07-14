@@ -83,18 +83,10 @@ public class InventoryClickEvent extends InventoryEvent implements Cancellable {
         Inventory cInv = getInventory();
         Inventory pInv = getWhoClicked().getInventory();
         if(slot < cInv.getSize()) { // It's in the container inventory
-            switch(getTransaction().getType()) {
-            case WORKBENCH:
-            case CRAFTING:
-                if(slot == 0)
-                    return cInv.getSize();
-                else return slot - 1;
-            default:
-                return slot;
-            }
+            return slot;
         } else { // It's in the player inventory
             int size = cInv.getSize();
-            if(getTransaction().getType() == InventoryType.CRAFTING && slot < (size + 4)) {
+            if(getTransaction().getType() == InventoryType.CRAFTING) {
                 // Armour slot?
                 switch(slot) {
                 case 5: return 39;
