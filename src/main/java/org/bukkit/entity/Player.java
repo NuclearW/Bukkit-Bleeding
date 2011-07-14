@@ -12,6 +12,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.Statistic;
 import org.bukkit.command.CommandSender;
 import org.bukkit.map.MapView;
+import org.bukkit.inventory.CustomInventory;
 import org.bukkit.inventory.Inventory;
 
 /**
@@ -182,6 +183,13 @@ public interface Player extends HumanEntity, CommandSender, OfflinePlayer {
      * @param inventory to use in the dialog GUI
      */
     public void openInventoryWindow(Inventory inventory);
+
+    /**
+     * Opens a custom inventory dialog to the player, with the given inventory displayed in the upper pane, and the player's inventory in the lower pane;
+     * 
+     * @param inventory to use in the dialog GUI
+     */
+    public void openInventoryWindow(CustomInventory inv);
 
     /**
      * Opens an workbench dialog to the player, using the workbench at the given location
