@@ -18,6 +18,7 @@ public class InventoryClickEvent extends InventoryEvent implements Cancellable {
     private Result result;
     private boolean cancel;
     private int whichSlot;
+    private int rawSlot;
 
     public InventoryClickEvent(InventoryTransaction what, Player whosePack, InventorySlotType type, ItemStack inSlot, ItemStack onCursor, boolean isRightClick, int slot) {
         super(Type.INVENTORY_CLICK, what);
@@ -78,10 +79,15 @@ public class InventoryClickEvent extends InventoryEvent implements Cancellable {
     public int getSlot() {
         return whichSlot;
     }
+    
+    public int getRawSlot() {
+        return rawSlot;
+    }
 
     private int convertSlot(int slot) {
         Inventory cInv = getInventory();
         Inventory pInv = getWhoClicked().getInventory();
+        rawSlot = slot;
         if(slot < cInv.getSize()) { // It's in the container inventory
             return slot;
         } else { // It's in the player inventory

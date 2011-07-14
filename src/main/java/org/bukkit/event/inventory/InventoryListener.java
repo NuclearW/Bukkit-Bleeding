@@ -29,4 +29,6 @@ public class InventoryListener implements Listener {
     public void onInventoryClick(InventoryClickEvent evt) {}
     
     public void onInventoryCraft(InventoryCraftEvent evt) {}
+
+    public void onInventoryChange(InventoryChangeEvent event) {}
 }

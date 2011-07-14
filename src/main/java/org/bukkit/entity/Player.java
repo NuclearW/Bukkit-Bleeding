@@ -178,11 +178,20 @@ public interface Player extends HumanEntity, CommandSender, OfflinePlayer {
     public void closeWindow();
 
     /**
-     * Opens an inventory dialog to the player, with the given inventory displayed in the upper pane, and the player's inventory in the lower pane;
+     * Opens an inventory dialog to the player, with the given inventory displayed in the upper pane, and the player's inventory in the lower pane.
      * 
      * @param inventory to use in the dialog GUI
      */
     public void openInventoryWindow(Inventory inventory);
+
+    /**
+     * Opens an inventory dialog to the player, with the given inventory displayed in the upper pane, and the player's inventory in the lower pane;
+     * the inventory is always in chest format and displays the given title. Passing a crafting or furnace inventory is not recommended
+     * and will not have the expected result.
+     * 
+     * @param inventory to use in the dialog GUI
+     */
+    void openInventoryWindow(Inventory inventory, String title);
 
     /**
      * Opens a custom inventory dialog to the player, with the given inventory displayed in the upper pane, and the player's inventory in the lower pane;

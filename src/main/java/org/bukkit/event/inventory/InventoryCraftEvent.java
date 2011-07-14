@@ -18,7 +18,7 @@ public class InventoryCraftEvent extends InventoryChangeEvent {
             for(int item = 0; item < recipe.length; item++)
                 if(row < 3 && item < 3)
                     matrix[row][item] = recipe[row][item];
-        pruneMatrix();
+        //pruneMatrix();
     }
     
     public int getWidth() {

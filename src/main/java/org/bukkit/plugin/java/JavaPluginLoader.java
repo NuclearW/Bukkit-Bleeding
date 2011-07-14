@@ -23,11 +23,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.painting.*;
 import org.bukkit.event.entity.*;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryCraftEvent;
-import org.bukkit.event.inventory.InventoryListener;
-import org.bukkit.event.inventory.InventoryOpenEvent;
+import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.*;
 import org.bukkit.event.server.*;
 import org.bukkit.event.vehicle.*;
@@ -392,6 +388,12 @@ public class JavaPluginLoader implements PluginLoader {
             return new EventExecutor() {
                 public void execute(Listener listener, Event event) {
                     ((InventoryListener) listener).onInventoryClick((InventoryClickEvent) event);
+                }
+            };
+        case INVENTORY_CHANGE:
+            return new EventExecutor() {
+                public void execute(Listener listener, Event event) {
+                    ((InventoryListener) listener).onInventoryChange((InventoryChangeEvent) event);
                 }
             };
         case INVENTORY_CRAFT:
