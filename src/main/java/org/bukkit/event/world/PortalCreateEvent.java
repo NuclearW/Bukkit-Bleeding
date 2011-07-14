@@ -11,7 +11,7 @@ import java.util.Collection;
  */
 public class PortalCreateEvent extends WorldEvent implements Cancellable {
     private boolean cancel = false;
-    private ArrayList<Block> blocks = new ArrayList<Block>();
+    private Collection<Block> blocks = new ArrayList<Block>();
 
     public PortalCreateEvent(final Collection<Block> blocks, final World world) {
         super(Type.PORTAL_CREATE, world);
@@ -23,7 +23,7 @@ public class PortalCreateEvent extends WorldEvent implements Cancellable {
      *
      * @return array list of all the blocks associated with the created portal
      */
-    public ArrayList<Block> getBlocks() {
+    public Collection<Block> getBlocks() {
         return this.blocks;
     }
 
