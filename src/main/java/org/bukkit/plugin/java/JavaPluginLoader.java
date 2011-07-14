@@ -23,6 +23,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.painting.*;
 import org.bukkit.event.entity.*;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryCraftEvent;
+import org.bukkit.event.inventory.InventoryListener;
+import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.event.server.*;
 import org.bukkit.event.vehicle.*;
@@ -374,13 +379,25 @@ public class JavaPluginLoader implements PluginLoader {
         case INVENTORY_OPEN:
             return new EventExecutor() {
                 public void execute(Listener listener, Event event) {
-                    ((PlayerListener) listener).onInventoryOpen((PlayerInventoryOpenEvent) event);
+                    ((InventoryListener) listener).onInventoryOpen((InventoryOpenEvent) event);
                 }
             };
         case INVENTORY_CLOSE:
             return new EventExecutor() {
                 public void execute(Listener listener, Event event) {
-                    ((PlayerListener) listener).onInventoryClose((PlayerInventoryCloseEvent) event);
+                    ((InventoryListener) listener).onInventoryClose((InventoryCloseEvent) event);
+                }
+            };
+        case INVENTORY_CLICK:
+            return new EventExecutor() {
+                public void execute(Listener listener, Event event) {
+                    ((InventoryListener) listener).onInventoryClick((InventoryClickEvent) event);
+                }
+            };
+        case INVENTORY_CRAFT:
+            return new EventExecutor() {
+                public void execute(Listener listener, Event event) {
+                    ((InventoryListener) listener).onInventoryCraft((InventoryCraftEvent) event);
                 }
             };
 

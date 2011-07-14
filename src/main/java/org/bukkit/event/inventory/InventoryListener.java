@@ -20,4 +20,13 @@ public class InventoryListener implements Listener {
      * @param event Relevant event details
      */
     public void onFurnaceBurn(FurnaceBurnEvent event) {}
+
+// transaction start/end, player joined/left transaction, and moving stuff around.
+    public void onInventoryOpen(InventoryOpenEvent evt) {}
+    
+    public void onInventoryClose(InventoryCloseEvent evt) {}
+    
+    public void onInventoryClick(InventoryClickEvent evt) {}
+    
+    public void onInventoryCraft(InventoryCraftEvent evt) {}
 }

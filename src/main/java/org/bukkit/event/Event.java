@@ -441,13 +441,13 @@ public abstract class Event implements Serializable {
          */
 
         /**
-         * Called when a player opens an inventory
+         * Called when a player opens an inventory and joins the transaction
          *
          * @todo: add javadoc see comment
          */
         INVENTORY_OPEN (Category.INVENTORY),
         /**
-         * Called when a player closes an inventory
+         * Called when a player closes an inventory and leaves the transactino
          *
          * @todo: add javadoc see comment
          */
@@ -465,11 +465,11 @@ public abstract class Event implements Serializable {
          */
         INVENTORY_CHANGE (Category.INVENTORY),
         /**
-         * Called when a player is attempting to perform an inventory transaction
+         * Called when a player clicks on a non-empty crafting result slot
          *
          * @todo: add javadoc see comment
          */
-        INVENTORY_TRANSACTION (Category.INVENTORY),
+        INVENTORY_CRAFT (Category.INVENTORY),
         /**
          * Called when an ItemStack is successfully smelted in a furnace.
          *

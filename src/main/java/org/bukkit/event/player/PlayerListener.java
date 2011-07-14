@@ -1,6 +1,9 @@
 package org.bukkit.event.player;
 
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryOpenEvent;
+import org.bukkit.plugin.AuthorNagException;
 
 /**
  * Handles all events thrown in relation to a Player
@@ -120,7 +123,7 @@ public class PlayerListener implements Listener {
      *
      * @param event Relevant event details
      */
-    public void onInventoryOpen(PlayerInventoryOpenEvent event) {
+    public void onInventoryOpen(InventoryOpenEvent event) {
     }
     
     /**
@@ -128,7 +131,7 @@ public class PlayerListener implements Listener {
      *
      * @param event Relevant event details
      */
-    public void onInventoryClose(PlayerInventoryCloseEvent event) {
+    public void onInventoryClose(InventoryCloseEvent event) {
     }
 
     /**

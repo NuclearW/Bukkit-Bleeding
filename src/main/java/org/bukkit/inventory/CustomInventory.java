@@ -2,6 +2,7 @@ package org.bukkit.inventory;
 
 import java.util.HashMap;
 
+import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 
 import org.bukkit.Location;
@@ -81,6 +82,19 @@ public interface CustomInventory {
      * @return The range
      */
     double getUseRange();
+
+    /**
+     * Get the block associated with this custom inventory, if any.
+     * 
+     * @return a Block, or null if none is associated
+     */
+    Block getBlock();
+
+    /**
+     * Called whenever the contents of the inventory changed for some reason.
+     * 
+     */
+    void onInventoryChanged();
 
 
 }
