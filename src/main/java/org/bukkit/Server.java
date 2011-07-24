@@ -3,6 +3,7 @@ package org.bukkit;
 import org.bukkit.generator.ChunkGenerator;
 import com.avaje.ebean.config.ServerConfig;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 
 import java.util.List;
@@ -402,6 +403,47 @@ public interface Server {
      * @return True to indicate that the recipe was added.
      */
     public boolean addRecipe(Recipe recipe);
+    
+    /**
+     * Removes a recipe matching the given item layout.
+     * Stack size of the items is ignored.
+     * If the grid is of size 1, furnace recipes will be checked;
+     * otherwise the grid must be of size 4 or 9, and shaped and
+     * shapeless recipe will be checked.
+     * It will never remove more than one recipe.
+     * @param grid The contents of the crafting grid in left-to-right, top-to-bottom order
+     * @return True if a recipe was found and removed.
+     */
+    public boolean removeRecipe(ItemStack[] grid);
+    
+    /**
+     * Checks if a recipe exists matching the given item layout.
+     * Stack size of the items is ignored.
+     * If the grid is of size 1, furnace recipes will be checked;
+     * otherwise the grid must be of size 4 or 9, and shaped and
+     * shapeless recipe will be checked.
+     * @param grid The contents of the crafting grid in left-to-right, top-to-bottom order
+     * @return True if a recipe was found.
+     */
+    public boolean hasRecipe(ItemStack[] grid);
+    
+    /**
+     * Gets the closest match recipe for the given item layout.
+     * Stack size of the items is ignored.
+     * If the grid is of size 1, a furnace recipe will be returned;
+     * otherwise the grid must be of size 4 or 9, and a shaped or
+     * shapeless recipe will be returned.
+     * @param grid The contents of the crafting grid in left-to-right, top-to-bottom order
+     * @return The closest match recipe.
+     */
+    public Recipe getRecipe(ItemStack[] grid);
+    
+    /**
+     * Get a list of all recipes for a given item.
+     * @param result The item whose recipes you want
+     * @return The list of recipes
+     */
+    public List<Recipe> getRecipesFor(ItemStack result);
 
     /**
      * Gets a list of command aliases defined in the server properties.
