@@ -1,12 +1,15 @@
 package org.bukkit.inventory;
 
 import java.util.HashMap;
+import java.util.List;
+
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 
 /**
  * Interface to the various inventories
  */
-public interface Inventory {
+public interface Inventory extends Iterable<ItemStack> {
 
     /**
      * Returns the size of the inventory
@@ -219,9 +222,12 @@ public interface Inventory {
     public void clear();
     
     /**
-     * Get the custom window, if any.
-     * 
-     * @return The custom window, or null if it's a built-in window
+     * Get a list of players viewing. Note that a player is considered to be viewing their own
+     * inventory and internal crafting screen even when said inventory is not open. They will normally
+     * be considered to be viewing their inventory even when they have a different inventory screen open,
+     * but it's possible for customized inventory screens to exclude the viewer's inventory, so this should
+     * never be assumed to be non-empty.
+     * @return A list of players.
      */
-    public CustomInventory getCustomWindow();
+    public List<Player> getViewers();
 }

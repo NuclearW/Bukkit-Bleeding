@@ -2,7 +2,7 @@ package org.bukkit.event.inventory;
 
 import java.util.List;
 
-import org.bukkit.inventory.InventoryTransaction;
+import org.bukkit.inventory.InventoryView;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event.Result;
@@ -12,24 +12,18 @@ import org.bukkit.inventory.ItemStack;
 
 public class InventoryClickEvent extends InventoryEvent implements Cancellable {
     private InventorySlotType slot_type;
-    private ItemStack cursor, slot;
-    private boolean right;
-    private Player who;
+    private boolean rightClick, shiftClick;
     private Result result;
-    private boolean cancel;
     private int whichSlot;
     private int rawSlot;
 
-    public InventoryClickEvent(InventoryTransaction what, Player whosePack, InventorySlotType type, ItemStack inSlot, ItemStack onCursor, boolean isRightClick, int slot) {
+    public InventoryClickEvent(InventoryView what, InventorySlotType type, int slot, boolean right, boolean shift) {
         super(Type.INVENTORY_CLICK, what);
         this.slot_type = type;
-        this.cursor = onCursor;
-        this.slot = inSlot;
-        this.right = isRightClick;
-        this.who = whosePack;
+        this.rightClick = right;
+        this.shiftClick = shift;
         this.result = Result.DEFAULT;
-        this.cancel = false;
-        this.whichSlot = convertSlot(slot);
+        this.whichSlot = what.convertSlot(slot);
     }
 
     public InventorySlotType getSlotType() {
@@ -37,15 +31,23 @@ public class InventoryClickEvent extends InventoryEvent implements Cancellable {
     }
     
     public ItemStack getCursor() {
-        return cursor;
+        return getView().getCursor();
     }
     
     public ItemStack getCurrentItem() {
-        return slot;
+        return getView().getItem(rawSlot);
     }
     
     public boolean isRightClick() {
-        return right;
+        return rightClick;
+    }
+    
+    public boolean isLeftClick() {
+        return !rightClick;
+    }
+    
+    public boolean isShiftClick() {
+        return shiftClick;
     }
     
     public void setResult(Result newResult) {
@@ -57,23 +59,23 @@ public class InventoryClickEvent extends InventoryEvent implements Cancellable {
     }
     
     public Player getWhoClicked() {
-        return this.who;
+        return getView().getPlayer();
     }
     
     public void setCursor(ItemStack what) {
-        this.cursor = what;
+        getView().setCursor(what);
     }
     
     public void setCurrentItem(ItemStack what) {
-        this.slot = what;
+        getView().setItem(rawSlot, what);
     }
 
     public boolean isCancelled() {
-        return cancel;
+        return result == Result.DENY;
     }
 
     public void setCancelled(boolean toCancel) {
-        cancel = toCancel;
+        result = toCancel ? Result.DENY : Result.ALLOW;
     }
     
     public int getSlot() {
@@ -92,7 +94,7 @@ public class InventoryClickEvent extends InventoryEvent implements Cancellable {
             return slot;
         } else { // It's in the player inventory
             int size = cInv.getSize();
-            if(getTransaction().getType() == InventoryType.CRAFTING) {
+            if(getView().getType() == InventoryType.CRAFTING) {
                 // Armour slot?
                 switch(slot) {
                 case 5: return 39;

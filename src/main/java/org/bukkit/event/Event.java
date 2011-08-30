@@ -459,12 +459,6 @@ public abstract class Event implements Serializable {
          */
         INVENTORY_CLICK (Category.INVENTORY),
         /**
-         * Called when an inventory slot changes values or type
-         *
-         * @todo: add javadoc see comment
-         */
-        INVENTORY_CHANGE (Category.INVENTORY),
-        /**
          * Called when a player clicks on a non-empty crafting result slot
          *
          * @todo: add javadoc see comment

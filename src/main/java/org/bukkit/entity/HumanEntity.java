@@ -1,6 +1,8 @@
 package org.bukkit.entity;
 
 import org.bukkit.GameMode;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.permissions.Permissible;
@@ -23,6 +25,32 @@ public interface HumanEntity extends LivingEntity, AnimalTamer, Permissible {
      * @return The inventory of the player, this also contains the armor slots.
      */
     public PlayerInventory getInventory();
+    
+    /**
+     * Gets the inventory view the player is currently viewing. If they do not have
+     * an inventory window open, it returns their internal crafting view.
+     * @return The inventory view.
+     */
+    public InventoryView getOpenInventory();
+    
+    /**
+     * Opens an inventory window with the specified inventory on the top and the player's inventory
+     * on the bottom.
+     * @param inventory The inventory to open
+     * @return The newly opened inventory view
+     */
+    public InventoryView openInventory(Inventory inventory);
+    
+    /**
+     * Opens an inventory window to the specified inventory view
+     * @param inventory The view to open
+     */
+    public void openInventory(InventoryView inventory);
+    
+    /**
+     * Force-closes the currently open inventory view for this player, if any.
+     */
+    public void closeInventory();
 
     /**
      * Returns the ItemStack currently in your hand, can be empty.

@@ -21,14 +21,36 @@ public class InventoryListener implements Listener {
      */
     public void onFurnaceBurn(FurnaceBurnEvent event) {}
 
-// transaction start/end, player joined/left transaction, and moving stuff around.
+    /**
+     * Called when an inventory view is opened. Will <i>not</i> be called
+     * when the player's internal crafting view is opened.
+     * 
+     * @param evt Relevant event details
+     */
     public void onInventoryOpen(InventoryOpenEvent evt) {}
     
+    /**
+     * Called when an inventory view is closed. Unlike {@link #onInventoryOpen(InventoryOpenEvent)},
+     * this is called for the player's internal crafting view.
+     * 
+     * @param evt Relevant event details
+     */
     public void onInventoryClose(InventoryCloseEvent evt) {}
     
+    /**
+     * Called when a player clicks on an inventory slot, or outside the
+     * inventory window.
+     * 
+     * @param evt Relevant event details
+     */
     public void onInventoryClick(InventoryClickEvent evt) {}
     
+    /**
+     * Called when a player tries to craft an item, either in the
+     * internal crafting view or on a workbench. Will not be called
+     * if the click event was cancelled.
+     * 
+     * @param evt Relevant event details
+     */
     public void onInventoryCraft(InventoryCraftEvent evt) {}
-
-    public void onInventoryChange(InventoryChangeEvent event) {}
 }

@@ -4,7 +4,7 @@ package org.bukkit.event.inventory;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.block.Block;
-import org.bukkit.inventory.InventoryTransaction;
+import org.bukkit.inventory.InventoryView;
 import org.bukkit.event.Cancellable;
 
 /**
@@ -15,7 +15,7 @@ public class InventoryOpenEvent extends InventoryEvent implements Cancellable {
     protected Player who;
     private boolean cancelled;
     
-    public InventoryOpenEvent(Player player, InventoryTransaction transaction, Block block) {
+    public InventoryOpenEvent(Player player, InventoryView transaction, Block block) {
         super(Type.INVENTORY_OPEN, transaction);
         
         this.block = block;

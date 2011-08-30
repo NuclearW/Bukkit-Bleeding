@@ -1,21 +1,20 @@
 
 package org.bukkit.event.inventory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.InventoryTransaction;
+import org.bukkit.inventory.InventoryView;
 
 /**
  * Represents a player related inventory event
  */
 public class InventoryEvent extends Event {
-    protected InventoryTransaction transaction;
+    protected InventoryView transaction;
     
-    public InventoryEvent(Type type, InventoryTransaction transaction) {
+    public InventoryEvent(Type type, InventoryView transaction) {
         super(type);
         this.transaction = transaction;
     }
@@ -23,27 +22,27 @@ public class InventoryEvent extends Event {
     /**
      * Gets the primary Inventory involved in this transaction
      *
-     * @return Inventory
+     * @return The upper inventory.
      */
     public Inventory getInventory() {
-        return transaction == null ? null : transaction.getInventory();
+        return transaction.getTopInventory();
     }
 
     /**
-     * Gets the list of players involved in this transaction
+     * Gets the list of players viewing the primary (upper) inventory involved in this event
      *
-     * @return List<Player>
+     * @return List<Player> A list of people viewing.
      */
-    public ArrayList<Player> getMembers() {
-        return transaction == null ? new ArrayList<Player>() : transaction.getMembers();
+    public List<Player> getViewers() {
+        return transaction.getTopInventory().getViewers();
     }
 
     /**
-     * Gets the transaction object itself
+     * Gets the view object itself
      *
-     * @return InventoryTransaction; null if there are no players left.
+     * @return InventoryView
      */
-    public InventoryTransaction getTransaction() {
+    public InventoryView getView() {
         return transaction;
     }
 }

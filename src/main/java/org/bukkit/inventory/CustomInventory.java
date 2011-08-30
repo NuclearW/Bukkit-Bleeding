@@ -1,12 +1,9 @@
 package org.bukkit.inventory;
 
-import java.util.HashMap;
-
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 
 import org.bukkit.Location;
-import org.bukkit.Material;
 
 /**
  * An interface to implement for custom inventory windows.
