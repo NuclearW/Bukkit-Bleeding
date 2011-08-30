@@ -3,6 +3,8 @@ package org.bukkit;
 import org.bukkit.generator.ChunkGenerator;
 import com.avaje.ebean.config.ServerConfig;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.Recipe;
 
 import java.util.List;
@@ -532,4 +534,30 @@ public interface Server {
      * @return Array containing all players
      */
     public OfflinePlayer[] getOfflinePlayers();
+    
+    /**
+     * Creates an empty inventory of the specified type. If the type is {@link InventoryType#CHEST},
+     * the new inventory has a size of 27; otherwise the new inventory has the normal size for
+     * its type.
+     * @param type The type of inventory to create.
+     * @return The new inventory.
+     */
+    Inventory createInventory(InventoryType type);
+    
+    /**
+     * Creates an empty inventory of type {@link InventoryType#CHEST} with the specified size.
+     * @param size The size of inventory to create; must be a multiple of 9.
+     * @return The new inventory.
+     * @throws IllegalArgumentException If the size is not a multiple of 9.
+     */
+    Inventory createInventory(int size) throws IllegalArgumentException;
+    
+    /**
+     * Creates an empty inventory of type {@link InventoryType#CHEST} with the specified size and title.
+     * @param size The size of inventory to create; must be a multiple of 9.
+     * @param title The title of the inventory, to be displayed when it is viewed.
+     * @return The new inventory.
+     * @throws IllegalArgumentException If the size is not a multiple of 9.
+     */
+    Inventory createInventory(int size, String title) throws IllegalArgumentException;
 }
