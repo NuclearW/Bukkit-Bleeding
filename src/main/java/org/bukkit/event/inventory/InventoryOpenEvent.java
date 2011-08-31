@@ -1,8 +1,8 @@
 
 package org.bukkit.event.inventory;
 
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.event.Cancellable;
@@ -12,15 +12,24 @@ import org.bukkit.event.Cancellable;
  */
 public class InventoryOpenEvent extends InventoryEvent implements Cancellable {
     protected Block block;
+    protected Entity entity;
     protected Player who;
     private boolean cancelled;
     
-    public InventoryOpenEvent(Player player, InventoryView transaction, Block block) {
+    public InventoryOpenEvent(Player player, InventoryView transaction) {
         super(Type.INVENTORY_OPEN, transaction);
-        
-        this.block = block;
         this.cancelled = false;
         this.who = player;
+    }
+    
+    public InventoryOpenEvent(Player player, InventoryView transaction, Block block) {
+        this(player, transaction);
+        this.block = block;
+    }
+    
+    public InventoryOpenEvent(Player player, InventoryView transaction, Entity entity) {
+        this(player, transaction);
+        this.entity = entity;
     }
     
     /**
@@ -29,6 +38,14 @@ public class InventoryOpenEvent extends InventoryEvent implements Cancellable {
      */
     public Block getBlock() {
         return this.block;
+    }
+    
+    /**
+     * Gets the entity belonging to the open inventory
+     * @return An Entity object that contains the inventory. Null if the inventory isn't entity based.
+     */
+    public Entity getEntity() {
+        return this.entity;
     }
     
     /**

@@ -1,12 +1,8 @@
 package org.bukkit.event.inventory;
 
-import java.util.List;
-
 import org.bukkit.inventory.InventoryView;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.event.Cancellable;
-import org.bukkit.event.Event.Result;
-import org.bukkit.event.Event.Type;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -23,6 +19,7 @@ public class InventoryClickEvent extends InventoryEvent implements Cancellable {
         this.rightClick = right;
         this.shiftClick = shift;
         this.result = Result.DEFAULT;
+        this.rawSlot = slot;
         this.whichSlot = what.convertSlot(slot);
     }
 
@@ -58,7 +55,7 @@ public class InventoryClickEvent extends InventoryEvent implements Cancellable {
         return result;
     }
     
-    public Player getWhoClicked() {
+    public HumanEntity getWhoClicked() {
         return getView().getPlayer();
     }
     

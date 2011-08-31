@@ -1,11 +1,15 @@
 package org.bukkit.inventory;
 
-import org.bukkit.entity.Player;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.event.inventory.InventoryType;
 
 /**
  * Represents a view linking two inventories and a single player
  * (whose inventory may or may not be one of the two)
+ * 
+ * Note: If you implement this interface but fail to satisfy the expected
+ * contracts of certain methods, there's no guarantee that the game
+ * will work as it should.
  */
 public interface InventoryView {
     /**
@@ -24,7 +28,7 @@ public interface InventoryView {
      * Get the player viewing.
      * @return the player
      */
-    Player getPlayer();
+    HumanEntity getPlayer();
     
     /**
      * Determine the type of inventory involved in the transaction. This indicates
@@ -63,23 +67,26 @@ public interface InventoryView {
     ItemStack getCursor();
     
     /**
-     * Updates the view the viewing player.
-     */
-    void update();
-    
-    /**
      * Converts a raw slot ID into its local slot ID into whichever of the two inventories
-     * the slot points to. The resulting integer is suitable for either getTopInventory().getItem()
-     * or for getBottomInventory.getItem(); use isInTop() to determine which one.
+     * the slot points to. If the raw slot refers to the upper inventory, it will be returned
+     * unchanged and thus be suitable for getTopInventory().getItem(); if it refers to the
+     * lower inventory, the output will differ from the input and be suitable for
+     * getBottomInventory().getItem().
      * @param rawSlot The raw slot ID.
      * @return The converted slot ID.
      */
     int convertSlot(int rawSlot);
     
     /**
-     * Check whether the given raw slot ID refers to a slot in the upper inventory.
-     * @param rawSlot The raw slot ID.
-     * @return True if it refers to the upper inventory, false if it refers to the lower.
+     * Closes the inventory view.
      */
-    boolean isInTop(int rawSlot);
+    void close();
+    
+    /**
+     * Check the total number of slots in this view, combining the upper and lower inventories.
+     * Note though that it's possible for this to be greater than the sum of the two inventories
+     * if for example some slots are not being used.
+     * @return The total size
+     */
+    int countSlots();
 }

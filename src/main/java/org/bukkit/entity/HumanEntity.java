@@ -1,6 +1,7 @@
 package org.bukkit.entity;
 
 import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
@@ -40,6 +41,15 @@ public interface HumanEntity extends LivingEntity, AnimalTamer, Permissible {
      * @return The newly opened inventory view
      */
     public InventoryView openInventory(Inventory inventory);
+    
+    /**
+     * Opens an empty workbench inventory window with the player's inventory on the bottom.
+     * @param location The location to attach it to. If null, the player's location is used.
+     * @param force If false, and there is no workbench block at the location, no inventory will be
+     * opened and null will be returned.
+     * @return The newly opened inventory view, or null if it could not be opened.
+     */
+    public InventoryView openWorkbench(Location location, boolean force);
     
     /**
      * Opens an inventory window to the specified inventory view

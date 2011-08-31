@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.bukkit.Material;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryType;
 
 /**
  * Interface to the various inventories
@@ -74,8 +76,9 @@ public interface Inventory extends Iterable<ItemStack> {
      * Set the inventory's contents
      *
      * @param items A complete replacement for the contents; the length must be equal to {@link #getSize()}.
+     * @throws IllegalArgumentException If the array has more items than the inventory.
      */
-    public void setContents(ItemStack[] items);
+    public void setContents(ItemStack[] items) throws IllegalArgumentException;
 
     /**
      * Check if the inventory contains any ItemStacks with the given materialId
@@ -229,5 +232,17 @@ public interface Inventory extends Iterable<ItemStack> {
      * never be assumed to be non-empty.
      * @return A list of players.
      */
-    public List<Player> getViewers();
+    public List<HumanEntity> getViewers();
+    
+    /**
+     * Get the title of this inventory window.
+     * @return The title.
+     */
+    public String getTitle();
+    
+    /**
+     * Check what type of inventory this is.
+     * @return The type of inventory.
+     */
+    public InventoryType getType();
 }

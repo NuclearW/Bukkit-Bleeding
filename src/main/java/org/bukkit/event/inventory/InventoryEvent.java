@@ -3,7 +3,7 @@ package org.bukkit.event.inventory;
 
 import java.util.List;
 
-import org.bukkit.entity.Player;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.event.Event;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
@@ -31,9 +31,9 @@ public class InventoryEvent extends Event {
     /**
      * Gets the list of players viewing the primary (upper) inventory involved in this event
      *
-     * @return List<Player> A list of people viewing.
+     * @return A list of people viewing.
      */
-    public List<Player> getViewers() {
+    public List<HumanEntity> getViewers() {
         return transaction.getTopInventory().getViewers();
     }
 
