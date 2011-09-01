@@ -408,7 +408,8 @@ public interface Server {
     public Recipe addRecipe(Recipe recipe);
     
     /**
-     * Get a list of all recipes for a given item.
+     * Get a list of all recipes for a given item. The stack size is ignored in comparisons.
+     * If the durability is -1, it will match any data value.
      * @param result The item whose recipes you want
      * @return The list of recipes
      */
