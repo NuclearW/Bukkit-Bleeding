@@ -27,7 +27,7 @@ public class InventoryListener implements Listener {
      * 
      * @param evt Relevant event details
      */
-    public void onInventoryOpen(InventoryOpenEvent evt) {}
+    public void onInventoryOpen(InventoryOpenEvent event) {}
     
     /**
      * Called when an inventory view is closed. Unlike {@link #onInventoryOpen(InventoryOpenEvent)},
@@ -35,7 +35,7 @@ public class InventoryListener implements Listener {
      * 
      * @param evt Relevant event details
      */
-    public void onInventoryClose(InventoryCloseEvent evt) {}
+    public void onInventoryClose(InventoryCloseEvent event) {}
     
     /**
      * Called when a player clicks on an inventory slot, or outside the
@@ -43,7 +43,7 @@ public class InventoryListener implements Listener {
      * 
      * @param evt Relevant event details
      */
-    public void onInventoryClick(InventoryClickEvent evt) {}
+    public void onInventoryClick(InventoryClickEvent event) {}
     
     /**
      * Called when a player tries to craft an item, either in the
@@ -52,5 +52,5 @@ public class InventoryListener implements Listener {
      * 
      * @param evt Relevant event details
      */
-    public void onInventoryCraft(InventoryCraftEvent evt) {}
+    public void onInventoryCraft(InventoryCraftEvent event) {}
 }
