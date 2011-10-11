@@ -3,7 +3,6 @@ package org.bukkit.event.inventory;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.event.Cancellable;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public class InventoryClickEvent extends InventoryEvent implements Cancellable {
@@ -81,31 +80,5 @@ public class InventoryClickEvent extends InventoryEvent implements Cancellable {
     
     public int getRawSlot() {
         return rawSlot;
-    }
-
-    private int convertSlot(int slot) {
-        Inventory cInv = getInventory();
-        Inventory pInv = getWhoClicked().getInventory();
-        rawSlot = slot;
-        if(slot < cInv.getSize()) { // It's in the container inventory
-            return slot;
-        } else { // It's in the player inventory
-            int size = cInv.getSize();
-            if(getView().getType() == InventoryType.CRAFTING) {
-                // Armour slot?
-                switch(slot) {
-                case 5: return 39;
-                case 6: return 38;
-                case 7: return 37;
-                case 8: return 36;
-                }
-                size += 4;
-            }
-            slot -= size;
-            if(slot >= 27) // Quickbar
-                slot -= 27;
-            else slot += 9;
-            return slot;
-        }
     }
 }
