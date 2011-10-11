@@ -75,10 +75,10 @@ public interface Inventory extends Iterable<ItemStack> {
     /**
      * Set the inventory's contents
      *
-     * @param items A complete replacement for the contents; the length must be equal to {@link #getSize()}.
+     * @param items A complete replacement for the contents; the length must be less than or equal to {@link #getSize()}.
      * @throws IllegalArgumentException If the array has more items than the inventory.
      */
-    public void setContents(ItemStack[] items) throws IllegalArgumentException;
+    public void setContents(ItemStack[] items);
 
     /**
      * Check if the inventory contains any ItemStacks with the given materialId

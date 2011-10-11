@@ -550,7 +550,7 @@ public interface Server {
      * @return The new inventory.
      * @throws IllegalArgumentException If the size is not a multiple of 9.
      */
-    Inventory createInventory(int size) throws IllegalArgumentException;
+    Inventory createInventory(int size);
     
     /**
      * Creates an empty inventory of type {@link InventoryType#CHEST} with the specified size and title.
@@ -559,5 +559,5 @@ public interface Server {
      * @return The new inventory.
      * @throws IllegalArgumentException If the size is not a multiple of 9.
      */
-    Inventory createInventory(int size, String title) throws IllegalArgumentException;
+    Inventory createInventory(int size, String title);
 }
