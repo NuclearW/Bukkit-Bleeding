@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.bukkit.Material;
 import org.bukkit.entity.HumanEntity;
-import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 
 /**
@@ -245,4 +244,10 @@ public interface Inventory extends Iterable<ItemStack> {
      * @return The type of inventory.
      */
     public InventoryType getType();
+    
+    /**
+     * Gets the block or entity belonging to the open inventory
+     * @return The holder of the inventory; null if it has no holder.
+     */
+    public InventoryHolder getHolder();
 }
