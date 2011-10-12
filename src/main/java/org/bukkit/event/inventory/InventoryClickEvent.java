@@ -1,18 +1,20 @@
 package org.bukkit.event.inventory;
 
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.event.Cancellable;
+import org.bukkit.event.inventory.InventoryType.SlotType;
 import org.bukkit.inventory.ItemStack;
 
 public class InventoryClickEvent extends InventoryEvent implements Cancellable {
-    private InventorySlotType slot_type;
+    private SlotType slot_type;
     private boolean rightClick, shiftClick;
     private Result result;
     private int whichSlot;
     private int rawSlot;
 
-    public InventoryClickEvent(InventoryView what, InventorySlotType type, int slot, boolean right, boolean shift) {
+    public InventoryClickEvent(InventoryView what, SlotType type, int slot, boolean right, boolean shift) {
         super(Type.INVENTORY_CLICK, what);
         this.slot_type = type;
         this.rightClick = right;
@@ -22,26 +24,48 @@ public class InventoryClickEvent extends InventoryEvent implements Cancellable {
         this.whichSlot = what.convertSlot(slot);
     }
 
-    public InventorySlotType getSlotType() {
+    /**
+     * Get the type of slot that was clicked.
+     * @return The slot type.
+     */
+    public SlotType getSlotType() {
         return slot_type;
     }
     
+    /**
+     * Get the current item on the cursor.
+     * @return The cursor item
+     */
     public ItemStack getCursor() {
         return getView().getCursor();
     }
     
+    /**
+     * Get the current item in the clicked slot.
+     * @return The slot item.
+     */
     public ItemStack getCurrentItem() {
         return getView().getItem(rawSlot);
     }
     
+    /**
+     * @return True if the click is a right-click.
+     */
     public boolean isRightClick() {
         return rightClick;
     }
     
+    /**
+     * @return True if the click is a left-click.
+     */
     public boolean isLeftClick() {
         return !rightClick;
     }
     
+    /**
+     * Shift can be combined with right-click or left-click as a modifier.
+     * @return True if the click is a shift-click.
+     */
     public boolean isShiftClick() {
         return shiftClick;
     }
@@ -54,14 +78,26 @@ public class InventoryClickEvent extends InventoryEvent implements Cancellable {
         return result;
     }
     
+    /**
+     * Get the player who performed the click.
+     * @return The clicking player.
+     */
     public HumanEntity getWhoClicked() {
         return getView().getPlayer();
     }
     
+    /**
+     * Set the item on the cursor.
+     * @param what The new cursor item.
+     */
     public void setCursor(ItemStack what) {
         getView().setCursor(what);
     }
     
+    /**
+     * Set the current item in the slot.
+     * @param what The new slot item.
+     */
     public void setCurrentItem(ItemStack what) {
         getView().setItem(rawSlot, what);
     }
@@ -74,10 +110,19 @@ public class InventoryClickEvent extends InventoryEvent implements Cancellable {
         result = toCancel ? Result.DENY : Result.ALLOW;
     }
     
+    /**
+     * The slot number that was clicked, ready for passing to {@link Inventory#getItem(int)}. Note
+     * that there may be two slots with the same slot number, since a view links two different inventories.
+     * @return The slot number.
+     */
     public int getSlot() {
         return whichSlot;
     }
     
+    /**
+     * The raw slot number, which is unique for the view.
+     * @return The slot number.
+     */
     public int getRawSlot() {
         return rawSlot;
     }

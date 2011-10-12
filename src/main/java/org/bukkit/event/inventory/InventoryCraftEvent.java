@@ -11,6 +11,9 @@ public class InventoryCraftEvent extends InventoryEvent {
         matrix = recipe;
     }
     
+    /**
+     * @return The recipe being crafted.
+     */
     public Recipe getRecipe() {
         return matrix;
     }
