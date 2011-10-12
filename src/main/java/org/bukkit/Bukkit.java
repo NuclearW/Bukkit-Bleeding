@@ -209,7 +209,7 @@ public final class Bukkit {
         server.configureDbConfig(config);
     }
 
-    public static Recipe addRecipe(Recipe recipe) {
+    public static boolean addRecipe(Recipe recipe) {
         return server.addRecipe(recipe);
     }
     

@@ -402,10 +402,9 @@ public interface Server {
     /**
      * Adds a recipe to the crafting manager.
      * @param recipe The recipe to add.
-     * @return The copy of the recipe that is now in the crafting manager;
-     * null if the recipe was not added for some reason.
+     * @return True if the recipe was added, false if it wasn't for some reason.
      */
-    public Recipe addRecipe(Recipe recipe);
+    public boolean addRecipe(Recipe recipe);
     
     /**
      * Get a list of all recipes for a given item. The stack size is ignored in comparisons.
