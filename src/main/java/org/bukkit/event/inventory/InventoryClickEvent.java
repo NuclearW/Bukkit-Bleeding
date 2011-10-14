@@ -13,6 +13,7 @@ public class InventoryClickEvent extends InventoryEvent implements Cancellable {
     private Result result;
     private int whichSlot;
     private int rawSlot;
+    private ItemStack current = null;
 
     public InventoryClickEvent(InventoryView what, SlotType type, int slot, boolean right, boolean shift) {
         super(Type.INVENTORY_CLICK, what);
@@ -45,6 +46,7 @@ public class InventoryClickEvent extends InventoryEvent implements Cancellable {
      * @return The slot item.
      */
     public ItemStack getCurrentItem() {
+        if(slot_type == SlotType.OUTSIDE) return current;
         return getView().getItem(rawSlot);
     }
     
@@ -99,7 +101,8 @@ public class InventoryClickEvent extends InventoryEvent implements Cancellable {
      * @param what The new slot item.
      */
     public void setCurrentItem(ItemStack what) {
-        getView().setItem(rawSlot, what);
+        if(slot_type == SlotType.OUTSIDE) current = what;
+        else getView().setItem(rawSlot, what);
     }
 
     public boolean isCancelled() {
