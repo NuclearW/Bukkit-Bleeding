@@ -71,10 +71,6 @@ public enum InventoryType {
          */
         QUICKBAR,
         /**
-         * A slot in the bottom row or quickbar in the creative mode item selection screen.
-         */
-        CREATIVE,
-        /**
          * A pseudo-slot representing the area outside the inventory window.
          */
         OUTSIDE,
