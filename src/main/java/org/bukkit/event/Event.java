@@ -465,6 +465,12 @@ public abstract class Event implements Serializable {
          */
         INVENTORY_CRAFT (Category.INVENTORY),
         /**
+         * Called when a player forms a valid recipe on the crafting matrix
+         *
+         * @todo: add javadoc see comment
+         */
+        INVENTORY_PRE_CRAFT (Category.INVENTORY),
+        /**
          * Called when an ItemStack is successfully smelted in a furnace.
          *
          * @see org.bukkit.event.inventory.FurnaceSmeltEvent

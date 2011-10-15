@@ -53,4 +53,13 @@ public class InventoryListener implements Listener {
      * @param event Relevant event details
      */
     public void onInventoryCraft(InventoryCraftEvent event) {}
+    
+    /**
+     * Called when a player forms a valid recipe, either in the
+     * internal crafting view or on a workbench. Will not be called
+     * if the click event was cancelled.
+     * 
+     * @param event Relevant event details
+     */
+    public void onInventoryPreCraft(InventoryPreCraftEvent event) {}
 }
