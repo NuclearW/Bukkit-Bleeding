@@ -390,12 +390,6 @@ public class JavaPluginLoader implements PluginLoader {
                     ((InventoryListener) listener).onInventoryClick((InventoryClickEvent) event);
                 }
             };
-        case INVENTORY_CRAFT:
-            return new EventExecutor() {
-                public void execute(Listener listener, Event event) {
-                    ((InventoryListener) listener).onInventoryCraft((InventoryCraftEvent) event);
-                }
-            };
         case INVENTORY_PRE_CRAFT:
             return new EventExecutor() {
                 public void execute(Listener listener, Event event) {

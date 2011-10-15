@@ -459,12 +459,6 @@ public abstract class Event implements Serializable {
          */
         INVENTORY_CLICK (Category.INVENTORY),
         /**
-         * Called when a player clicks on a non-empty crafting result slot
-         *
-         * @todo: add javadoc see comment
-         */
-        INVENTORY_CRAFT (Category.INVENTORY),
-        /**
          * Called when a player forms a valid recipe on the crafting matrix
          *
          * @todo: add javadoc see comment
