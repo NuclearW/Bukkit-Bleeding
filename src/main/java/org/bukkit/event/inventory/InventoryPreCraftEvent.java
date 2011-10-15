@@ -5,12 +5,10 @@ import org.bukkit.inventory.CraftingInventory;
 import org.bukkit.inventory.Recipe;
 
 public class InventoryPreCraftEvent extends Event {
-    Recipe recipe;
     CraftingInventory matrix;
 
-    public InventoryPreCraftEvent(CraftingInventory what, Recipe recipe) {
+    public InventoryPreCraftEvent(CraftingInventory what) {
         super(Type.INVENTORY_PRE_CRAFT);
-        this.recipe = recipe;
         this.matrix = what;
     }
     
@@ -18,7 +16,7 @@ public class InventoryPreCraftEvent extends Event {
      * @return The recipe being crafted.
      */
     public Recipe getRecipe() {
-        return recipe;
+        return matrix.getRecipe();
     }
     
     /**
