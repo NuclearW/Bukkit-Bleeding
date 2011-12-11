@@ -342,6 +342,20 @@ public interface World {
     public List<LivingEntity> getLivingEntities();
 
     /**
+     * Get a list of all entities in this World matching the given class/interface
+     *
+     * @return A List of all Entities currently residing in this world that match the given class/interface
+     */
+    public List<Entity> getEntitiesByClass(Class<?> cls);
+
+    /**
+     * Get a list of all entities in this World matching at least one of a given set of classes/interface
+     *
+     * @return A List of all Entities currently residing in this world that match any of the given classes/interfaces
+     */
+    public List<Entity> getEntitiesByClasses(Class<?> cls[]);
+
+    /**
      * Get a list of all players in this World
      *
      * @return A list of all Players currently residing in this world
