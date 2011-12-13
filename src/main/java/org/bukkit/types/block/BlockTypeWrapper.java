@@ -16,4 +16,24 @@ public class BlockTypeWrapper extends BlockType {
     public String getName() {
         return getHandle().getName();
     }
+
+    @Override
+    public void setLightEmission(int amount) {
+        getHandle().setLightEmission(amount);
+    }
+
+    @Override
+    public int getLightEmission() {
+        return getHandle().getLightEmission();
+    }
+
+    @Override
+    public void setLightBlock(int amount) {
+        getHandle().setLightBlock(amount);
+    }
+
+    @Override
+    public int getLightBlock() {
+        return getHandle().getLightBlock();
+    }
 }
