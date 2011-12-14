@@ -46,5 +46,15 @@ public abstract class ItemSword extends ItemType {
         public String getName() {
             return getHandle().getName();
         }
+
+        @Override
+        public int getMaxUses() {
+            return getHandle().getMaxUses();
+        }
+
+        @Override
+        public void setMaxUses(int uses) {
+            getHandle().setMaxUses(uses);
+        }
     }
 }

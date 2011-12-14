@@ -43,6 +43,25 @@ public abstract class ItemType {
      */
     public abstract String getName();
 
+    /**
+     * Gets the maximum amount of times this item may be used before breaking.
+     * <p>
+     * This may be 0, in which case the item will never break.
+     *
+     * @return Maximum amount of times this item can be used, or 0 for infinite
+     */
+    public abstract int getMaxUses();
+
+    /**
+     * Sets the maximum amount of times this item may be used before breaking.
+     * <p>
+     * This may be 0, in which case the item will never break.
+     *
+     * @param uses Maximum amount of times this item can be used, or 0 for infinite
+     * @throws IllegalArgumentException Thrown if uses < 0
+     */
+    public abstract void setMaxUses(int uses);
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {

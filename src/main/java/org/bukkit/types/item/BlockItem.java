@@ -5,7 +5,7 @@ import org.bukkit.types.block.BlockType;
 /**
  * Represents an {@link ItemType} version of a {@link BlockType}.
  */
-public class BlockItem extends ItemType {
+public abstract class BlockItem extends ItemType {
     public BlockItem(BlockType block) {
         super(block.getId());
     }
@@ -31,6 +31,20 @@ public class BlockItem extends ItemType {
     public static class Wrapper extends BlockItem {
         public Wrapper(int id) {
             super(id);
+        }
+        
+        public BlockItem getHandle() {
+            return (BlockItem)ItemType.get(getId());
+        }
+
+        @Override
+        public int getMaxUses() {
+            return getHandle().getMaxUses();
+        }
+
+        @Override
+        public void setMaxUses(int uses) {
+            getHandle().setMaxUses(uses);
         }
     }
 }
