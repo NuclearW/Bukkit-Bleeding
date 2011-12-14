@@ -1,4 +1,4 @@
-package org.bukkit.types;
+package org.bukkit.types.item;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,12 +7,14 @@ import java.util.Map;
  * Represents the various type of Items in the game, that may be held by players
  */
 public abstract class ItemType {
-    public static final BlockItem STONE = new BlockItem.BlockItemWrapper(1);
-    public static final BlockItem GRASS = new BlockItem.BlockItemWrapper(2);
+    public static final BlockItem STONE = new BlockItem.Wrapper(1);
+    public static final BlockItem GRASS = new BlockItem.Wrapper(2);
     // ....
 
     public static final ItemType IRON_SHOVEL = new ItemWrapper(256);
     public static final ItemType IRON_PICKAXE = new ItemWrapper(257);
+    public static final ItemType IRON_AXE = new ItemWrapper(258);
+    public static final ItemSword IRON_SWORD = new ItemSword.Wrapper(267);
     // ....
 
     private static final int MAX_ITEM_TYPES = 32000;

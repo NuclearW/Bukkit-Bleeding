@@ -1,4 +1,4 @@
-package org.bukkit.types;
+package org.bukkit.types.item;
 
 /**
  * A wrapper class for {@link Item}s to point towards any registered Item with a given ID

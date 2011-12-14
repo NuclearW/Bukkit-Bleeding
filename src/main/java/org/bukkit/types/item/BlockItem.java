@@ -1,4 +1,4 @@
-package org.bukkit.types;
+package org.bukkit.types.item;
 
 import org.bukkit.types.block.BlockType;
 
@@ -28,8 +28,8 @@ public class BlockItem extends ItemType {
         return BlockType.get(getId());
     }
 
-    public static class BlockItemWrapper extends BlockItem {
-        public BlockItemWrapper(int id) {
+    public static class Wrapper extends BlockItem {
+        public Wrapper(int id) {
             super(id);
         }
     }
