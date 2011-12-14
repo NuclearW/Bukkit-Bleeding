@@ -3,11 +3,7 @@ package org.bukkit.types.item;
 /**
  * Represents a sword item, that may be used to harm other entities
  */
-public abstract class ItemSword extends ItemType {
-    public ItemSword(int id) {
-        super(id);
-    }
-
+public interface ItemSword extends ItemType {
     /**
      * Gets the damage that this item will inflict upon an entity.
      *
@@ -23,38 +19,22 @@ public abstract class ItemSword extends ItemType {
      */
     public abstract void setDamage(int damage);
 
-    public static class Wrapper extends ItemSword {
+    public static class Wrapper extends ItemWrapper implements ItemSword {
         public Wrapper(int id) {
             super(id);
         }
 
+        @Override
         public ItemSword getHandle() {
-            return (ItemSword)ItemType.get(getId());
+            return (ItemSword)super.getHandle();
         }
 
-        @Override
         public int getDamage() {
             return getHandle().getDamage();
         }
 
-        @Override
         public void setDamage(int damage) {
             getHandle().setDamage(damage);
-        }
-
-        @Override
-        public String getName() {
-            return getHandle().getName();
-        }
-
-        @Override
-        public int getMaxUses() {
-            return getHandle().getMaxUses();
-        }
-
-        @Override
-        public void setMaxUses(int uses) {
-            getHandle().setMaxUses(uses);
         }
     }
 }

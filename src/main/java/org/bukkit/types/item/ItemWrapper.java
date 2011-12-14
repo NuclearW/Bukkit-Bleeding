@@ -3,13 +3,13 @@ package org.bukkit.types.item;
 /**
  * A wrapper class for {@link Item}s to point towards any registered Item with a given ID
  */
-public class ItemWrapper extends ItemType {
+public class ItemWrapper extends BaseItemType {
     public ItemWrapper(int id) {
         super(id);
     }
 
     public ItemType getHandle() {
-        return ItemType.get(getId());
+        return Items.get(getId());
     }
 
     @Override
