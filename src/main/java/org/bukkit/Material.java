@@ -132,7 +132,7 @@ public enum Material {
     BREWING_STAND(117),
     CAULDRON(118),
     ENDER_PORTAL(119),
-    ENTER_PORTAL_FRAME(120),
+    ENDER_PORTAL_FRAME(120),
     ENDER_STONE(121),
     DRAGON_EGG(122),
     // ----- Item Separator -----
@@ -141,7 +141,7 @@ public enum Material {
     IRON_AXE(258, 1, 250),
     FLINT_AND_STEEL(259, 1, 64),
     APPLE(260),
-    BOW(261, 1),
+    BOW(261, 1, 384),
     ARROW(262),
     COAL(263, Coal.class),
     DIAMOND(264),
@@ -385,6 +385,30 @@ public enum Material {
      */
     public boolean isBlock() {
         return id < 256;
+    }
+
+    /**
+     * Checks if this Material is edible.
+     *
+     * @return true if this Material is edible.
+     */
+    public boolean isEdible() {
+        return equals(Material.BREAD)
+                || equals(Material.COOKIE)
+                || equals(Material.MELON)
+                || equals(Material.MUSHROOM_SOUP)
+                || equals(Material.RAW_CHICKEN)
+                || equals(Material.COOKED_CHICKEN)
+                || equals(Material.RAW_BEEF)
+                || equals(Material.COOKED_BEEF)
+                || equals(Material.RAW_FISH)
+                || equals(Material.COOKED_FISH)
+                || equals(Material.PORK)
+                || equals(Material.GRILLED_PORK)
+                || equals(Material.APPLE)
+                || equals(Material.GOLDEN_APPLE)
+                || equals(Material.ROTTEN_FLESH)
+                || equals(Material.SPIDER_EYE);
     }
 
     /**

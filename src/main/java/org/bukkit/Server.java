@@ -110,6 +110,13 @@ public interface Server {
      * @return The ID of this server
      */
     public String getServerId();
+    
+    /**
+     * Gets whether this server allows the End or not.
+     *
+     * @return Whether this server allows the End or not.
+     */
+    public boolean getAllowEnd();
 
     /**
      * Gets whether this server allows the Nether or not.
@@ -511,4 +518,18 @@ public interface Server {
      * @return The Console CommandSender
      */
     public ConsoleCommandSender getConsoleSender();
+
+    /**
+     * Gets the folder that contains all of the various {@link World}s.
+     *
+     * @return World container folder
+     */
+    public File getWorldContainer();
+
+    /**
+     * Gets every player that has ever played on this server.
+     *
+     * @return Array containing all players
+     */
+    public OfflinePlayer[] getOfflinePlayers();
 }
