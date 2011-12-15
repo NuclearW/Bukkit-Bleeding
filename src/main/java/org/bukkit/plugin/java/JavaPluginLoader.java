@@ -956,6 +956,9 @@ public class JavaPluginLoader implements PluginLoader {
         }
 
         if (!plugin.isEnabled()) {
+            String message = String.format("[%s] Loading %s.", plugin.getDescription().getName(), plugin.getDescription().getFullName());
+            server.getLogger().info(message);
+
             JavaPlugin jPlugin = (JavaPlugin) plugin;
 
             String pluginName = jPlugin.getDescription().getName();
@@ -970,9 +973,6 @@ public class JavaPluginLoader implements PluginLoader {
                 server.getLogger().log(Level.SEVERE, "Error occurred while enabling " + plugin.getDescription().getFullName() + " (Is it up to date?): " + ex.getMessage(), ex);
             }
 
-            String message = String.format("[%s] %s loaded.", plugin.getDescription().getName(), plugin.getDescription().getFullName());
-            server.getLogger().info(message);
-            
             // Perhaps abort here, rather than continue going, but as it stands,
             // an abort is not possible the way it's currently written
             server.getPluginManager().callEvent(new PluginEnableEvent(plugin));
@@ -985,6 +985,9 @@ public class JavaPluginLoader implements PluginLoader {
         }
 
         if (plugin.isEnabled()) {
+            String message = String.format("[%s] Unloading %s.", plugin.getDescription().getName(), plugin.getDescription().getFullName());
+            server.getLogger().info(message);
+
             JavaPlugin jPlugin = (JavaPlugin) plugin;
             ClassLoader cloader = jPlugin.getClassLoader();
 
@@ -1006,9 +1009,6 @@ public class JavaPluginLoader implements PluginLoader {
                     removeClass(name);
                 }
             }
-
-            String message = String.format("[%s] %s unloaded.", plugin.getDescription().getName(), plugin.getDescription().getFullName());
-            server.getLogger().info(message);
         }
     }
 }
