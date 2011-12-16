@@ -331,6 +331,13 @@ public abstract class JavaPlugin implements Plugin {
         return getDescription().getFullName();
     }
 
+    /**
+     * Returns the primary logger associated with this server instance. The returned logger automatically
+     * tags all log messages with the plugin's name.
+     *
+     * @see org.bukkit.plugin.Plugin#getLogger()
+     * @return Logger associated with this server
+     */
     public Logger getLogger() {
         PluginLogger logger = new PluginLogger(this);
         return logger;
