@@ -25,6 +25,7 @@ import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginLoader;
+import org.bukkit.plugin.PluginLogger;
 import org.bukkit.util.config.Configuration;
 
 /**
@@ -328,5 +329,10 @@ public abstract class JavaPlugin implements Plugin {
     @Override
     public String toString() {
         return getDescription().getFullName();
+    }
+
+    public Logger getLogger() {
+        PluginLogger logger = new PluginLogger(this);
+        return logger;
     }
 }
