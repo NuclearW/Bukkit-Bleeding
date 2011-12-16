@@ -42,28 +42,38 @@ public class PluginLogger extends Logger {
     }
 
     @Override
-    public void entering(String s, String s1) {
-        base.entering(s, s1);
+    public void entering(String className, String methodName) {
+        entering(className, methodName, new Object[0]);
     }
 
     @Override
-    public void entering(String s, String s1, Object o) {
-        base.entering(s, s1, o);
+    public void entering(String className, String methodName, Object parameter) {
+        Object[] parameters = {parameter};
+        entering(className, methodName, parameters);
     }
 
     @Override
-    public void entering(String s, String s1, Object[] objects) {
-        base.entering(s, s1, objects);
+    public void entering(String className, String methodName, Object... parameters) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("ENTRY  ").append(className).append(".").append(methodName).append("(");
+        for (int i = 0; i < parameters.length; i++) {
+            if (i != 0) {
+                sb.append(", ");
+            }
+            sb.append(parameters[i]);
+        }
+        sb.append(")");
+        finer(sb.toString());
     }
 
     @Override
-    public void exiting(String s, String s1) {
-        base.exiting(s, s1);
+    public void exiting(String className, String methodName) {
+        finer(String.format("RETURN %s.%s()", className, methodName));
     }
 
     @Override
-    public void exiting(String s, String s1, Object o) {
-        base.exiting(s, s1, o);
+    public void exiting(String className, String methodName, Object result) {
+        finer(String.format("RETURN %s.%s() => %s", className, methodName, result));
     }
 
     @Override
@@ -78,7 +88,7 @@ public class PluginLogger extends Logger {
 
     @Override
     public void finest(String s) {
-        base.finest(pluginName + s);     
+        base.finest(pluginName + s);
     }
 
     @Override
@@ -227,8 +237,8 @@ public class PluginLogger extends Logger {
     }
 
     @Override
-    public void throwing(String s, String s1, Throwable throwable) {
-        base.throwing(s, s1, throwable);
+    public void throwing(String className, String method, Throwable throwable) {
+        finer(String.format("THROW  %s.%s()\n%s\n", className, method, throwable));
     }
 
     @Override
