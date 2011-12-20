@@ -7,25 +7,29 @@ import org.junit.Test;
 public class FixedMetadataValueTest {
     @Test
     public void fixedIntTest() {
-        FixedMetadataValue metadataValue = new FixedMetadataValue(null, 10);
+        MockPlugin mockPlugin = new MockPlugin("x");
+        FixedMetadataValue metadataValue = new FixedMetadataValue(mockPlugin, 10);
         assertEquals(10, metadataValue.asInt());
     }
 
     @Test
     public void fixedDoubleTest() {
-        FixedMetadataValue metadataValue = new FixedMetadataValue(null, 10.5);
+        MockPlugin mockPlugin = new MockPlugin("x");
+        FixedMetadataValue metadataValue = new FixedMetadataValue(mockPlugin, 10.5);
         assertEquals(10.5, metadataValue.asDouble(), 0.01);
     }
 
     @Test
     public void fixedStringTest() {
-        FixedMetadataValue metadataValue = new FixedMetadataValue(null, "TEN");
+        MockPlugin mockPlugin = new MockPlugin("x");
+        FixedMetadataValue metadataValue = new FixedMetadataValue(mockPlugin, "TEN");
         assertEquals("TEN", metadataValue.asString());
     }
 
     @Test
     public void fixedBooleanTest() {
-        FixedMetadataValue metadataValue = new FixedMetadataValue(null, true);
+        MockPlugin mockPlugin = new MockPlugin("x");
+        FixedMetadataValue metadataValue = new FixedMetadataValue(mockPlugin, true);
         assertEquals(true, metadataValue.asBoolean());
     }
 }
