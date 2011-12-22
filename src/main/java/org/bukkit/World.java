@@ -346,7 +346,7 @@ public interface World {
      *
      * @return A List of all Entities currently residing in this world that match the given class/interface
      */
-    public List<Entity> getEntitiesByClass(Class<?> cls);
+    public <T extends Entity> List<T> getEntitiesByClass(Class<T> cls);
 
     /**
      * Get a list of all entities in this World matching at least one of a given set of classes/interface
